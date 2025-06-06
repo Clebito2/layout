@@ -31,7 +31,7 @@
             font-family: var(--font-primaria);
             background-color: var(--azul-petroleo);
             color: var(--cinza-claro);
-             /* NOVO: Adiciona um gradiente sutil ao fundo geral */
+             /* Adiciona um gradiente sutil ao fundo geral */
             background-image: radial-gradient(circle at 50% 0, rgba(255, 255, 255, 0.05), transparent 50%);
         }
 
@@ -39,11 +39,11 @@
         h1, h2, h3, h4, h5, h6 {
             font-family: var(--font-primaria);
             font-weight: 700;
-             /* NOVO: Sombra para dar nitidez e profundidade aos títulos */
+             /* Sombra para dar nitidez e profundidade aos títulos */
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
         
-        /* NOVO: Sombra sutil para o texto comum, melhorando a legibilidade */
+        /* Sombra sutil para o texto comum, melhorando a legibilidade */
         p, li, span, td, th {
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
@@ -52,23 +52,13 @@
         /* Cor de destaque para títulos e elementos chave */
         .text-brand-green {
             color: var(--verde-vibrante);
-            /* NOVO: Sombra mais forte para o verde se destacar ainda mais */
+            /* Sombra mais forte para o verde se destacar ainda mais */
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
         }
 
         /* Cor de fundo principal */
         .bg-brand-dark {
             background-color: var(--azul-petroleo);
-        }
-        
-        /* Cor de fundo secundária para contraste */
-        .bg-brand-light {
-             background-color: var(--cinza-claro);
-        }
-        
-        /* Cor de texto para fundos claros */
-        .text-brand-dark{
-            color: var(--azul-petroleo);
         }
         
         /* Botão principal com a cor verde vibrante */
@@ -96,7 +86,7 @@
             background-size: cover;
         }
 
-        /* NOVO: Classe para seções com padrão de fundo sutil */
+        /* Classe para seções com padrão de fundo sutil */
         .section-bg-pattern {
             background-color: #111827; /* Cor de fallback (gray-900) */
             /* Padrão de pontos sutis para adicionar textura */
@@ -122,6 +112,30 @@
         .fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
+
+        /* NOVO: Estilo para a galeria de imagens com degradê */
+        .image-showcase {
+            position: relative;
+            padding-top: 66.66%; /* Proporção 3:2 */
+            background-size: cover;
+            background-position: center;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: transform 0.4s ease;
+        }
+        .image-showcase:hover {
+            transform: scale(1.05);
+        }
+        .image-showcase::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Degradê que começa transparente em cima e fica opaco embaixo */
+            background: linear-gradient(to top, var(--azul-petroleo) 5%, transparent 50%);
+        }
     </style>
 </head>
 <body class="bg-brand-dark">
@@ -129,7 +143,7 @@
     <!-- CABEÇALHO -->
     <header class="py-6 px-4 sm:px-8 md:px-16 fixed top-0 left-0 right-0 z-50 bg-brand-dark bg-opacity-80 backdrop-blur-sm">
         <div class="container mx-auto flex justify-between items-center">
-            <!-- !! ATENÇÃO: Troque o 'src' pelo caminho correto no seu repositório !! -->
+            <!-- Caminho da imagem ATUALIZADO para o repositório do GitHub -->
             <img src="https://raw.githubusercontent.com/Clebito2/layout/main/Logo live oficial-36.png" alt="Logo Live Liderança & Vendas" class="h-12">
             <p id="header-client-name" class="hidden md:block text-right text-gray-300"></p>
         </div>
@@ -211,14 +225,31 @@
                 </div>
             </div>
         </section>
-
+        
+        <!-- NOVA SEÇÃO: Galeria Visual -->
+        <section class="py-16 md:py-24 bg-brand-dark">
+            <div class="container mx-auto px-4 md:px-16 fade-in">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">Visão para o Futuro</h2>
+                    <p class="mt-2 text-gray-400">Construindo juntos uma trajetória de sucesso e crescimento contínuo.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Imagem 1 -->
+                    <div class="image-showcase" style="background-image: url('https://images.unsplash.com/photo-1542744095-291d1f67b221?q=80&w=2940&auto=format&fit=crop');"></div>
+                    <!-- Imagem 2 -->
+                    <div class="image-showcase" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2940&auto=format&fit=crop');"></div>
+                    <!-- Imagem 3 -->
+                    <div class="image-showcase" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2940&auto=format&fit=crop');"></div>
+                </div>
+            </div>
+        </section>
 
     </main>
 
     <!-- RODAPÉ -->
     <footer class="bg-black py-12">
         <div class="container mx-auto px-8 text-center text-gray-500">
-             <!-- !! ATENÇÃO: Troque o 'src' pelo caminho correto no seu repositório !! -->
+             <!-- Caminho da imagem ATUALIZADO para o repositório do GitHub -->
             <img src="https://raw.githubusercontent.com/Clebito2/layout/main/Logo live oficial-34.png" alt="Logo Live" class="h-10 mx-auto mb-4">
             <p>Live Liderança & Vendas</p>
             <p class="text-sm">Alta performance começa com atitude.</p>
