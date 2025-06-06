@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta de Consultoria | Live Liderança & Vendas</title>
+    
+    <!-- Tailwind CSS para agilizar o layout responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins e Merriweather, conforme manual da marca -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones (Feather Icons) -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        /* CSS Customizado para aplicar a identidade visual da Live */
+        :root {
+            --azul-petroleo: #06192a;
+            --verde-vibrante: #00e800;
+            --cinza-claro: #f4f4f4;
+            --branco: #ffffff;
+            --font-primaria: 'Poppins', sans-serif;
+            --font-secundaria: 'Merriweather', serif;
+        }
+
+        body {
+            font-family: var(--font-primaria);
+            background-color: var(--azul-petroleo);
+            color: var(--cinza-claro);
+        }
+
+        /* Aplica as fontes e cores da marca nos elementos principais */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primaria);
+            font-weight: 700;
+        }
+
+        /* Cor de destaque para títulos e elementos chave */
+        .text-brand-green {
+            color: var(--verde-vibrante);
+        }
+
+        /* Cor de fundo principal */
+        .bg-brand-dark {
+            background-color: var(--azul-petroleo);
+        }
+        
+        /* Cor de fundo secundária para contraste */
+        .bg-brand-light {
+             background-color: var(--cinza-claro);
+        }
+        
+        /* Cor de texto para fundos claros */
+        .text-brand-dark{
+            color: var(--azul-petroleo);
+        }
+        
+        /* Botão principal com a cor verde vibrante */
+        .btn-brand {
+            background-color: var(--verde-vibrante);
+            color: var(--azul-petroleo);
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-brand:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 232, 0, 0.2);
+        }
+
+        /* Estilo para a fonte secundária em citações ou destaques */
+        .font-brand-secondary {
+            font-family: var(--font-secundaria);
+        }
+
+        /* Efeito de gradiente sutil no fundo da seção Hero */
+        .hero-gradient {
+            background: linear-gradient(rgba(6, 25, 42, 0.8), rgba(6, 25, 42, 1)), url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2832&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
+        }
+        
+        /* Estilo para as abas */
+        .tab-button {
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-button.active {
+            color: var(--verde-vibrante);
+            border-bottom-color: var(--verde-vibrante);
+        }
+        
+        /* Animação para o conteúdo aparecer */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark">
+
+    <!-- CABEÇALHO -->
+    <header class="py-6 px-4 sm:px-8 md:px-16 fixed top-0 left-0 right-0 z-50 bg-brand-dark bg-opacity-80 backdrop-blur-sm">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- !! ATENÇÃO: Troque o 'src' pelo caminho correto no seu repositório !! -->
+            <img src="https://i.ibb.co/6P0qQfC/Logo-live-oficial-19.png" alt="Logo Live Liderança & Vendas" class="h-12">
+            <p id="header-client-name" class="hidden md:block text-right text-gray-300"></p>
+        </div>
+    </header>
+
+    <main class="pt-24">
+        <!-- SEÇÃO HERO -->
+        <section class="hero-gradient py-24 md:py-32 text-center text-white">
+            <div class="container mx-auto px-4 fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+                    Plano de Ação e Proposta <br class="hidden md:block"> para <span id="proposal-client-name" class="text-brand-green"></span>
+                </h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-300">Apresentado em: <span id="proposal-date"></span></p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DIAGNÓSTICO -->
+        <section class="py-16 md:py-24 bg-brand-dark">
+            <div class="container mx-auto px-4 md:px-16 fade-in">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">Diagnóstico Estratégico</h2>
+                    <p class="mt-2 text-gray-400">Um resumo claro dos desafios e oportunidades que identificamos.</p>
+                </div>
+                <div id="diagnosis-summary" class="max-w-3xl mx-auto bg-gray-900 p-8 rounded-lg shadow-lg text-lg text-gray-300 leading-relaxed font-brand-secondary italic border-l-4 border-brand-green">
+                    <!-- Conteúdo do diagnóstico será inserido aqui pelo JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO PLANO DE AÇÃO -->
+        <section class="py-16 md:py-24 bg-gray-900">
+            <div class="container mx-auto px-4 md:px-16 fade-in">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold">Nosso Plano de Ação</h2>
+                    <p class="mt-2 text-gray-400">Etapas concretas para impulsionar seus resultados.</p>
+                </div>
+                <div id="action-plan-steps" class="relative border-l-2 border-brand-green ml-4 md:ml-0 md:mx-auto md:max-w-3xl lg:max-w-4xl">
+                    <!-- Etapas do plano serão inseridas aqui pelo JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO PROPOSTA (ESCOPO E INVESTIMENTO) -->
+        <section id="proposal" class="py-16 md:py-24 bg-brand-dark">
+            <div class="container mx-auto px-4 md:px-16 fade-in">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">Proposta de Consultoria</h2>
+                    <p class="mt-2 text-gray-400">Detalhes sobre o escopo dos serviços e o investimento.</p>
+                </div>
+                
+                <!-- Abas -->
+                <div class="flex justify-center border-b border-gray-700 mb-8">
+                    <button class="tab-button active text-lg font-semibold py-3 px-6" onclick="openTab(event, 'scope')">Escopo Detalhado</button>
+                    <button class="tab-button text-lg font-semibold py-3 px-6" onclick="openTab(event, 'investment')">Investimento</button>
+                </div>
+
+                <!-- Conteúdo das Abas -->
+                <div id="scope" class="tab-content">
+                    <div id="scope-details" class="space-y-6">
+                        <!-- Detalhes do escopo serão inseridos aqui -->
+                    </div>
+                </div>
+
+                <div id="investment" class="tab-content hidden">
+                    <div id="investment-details" class="max-w-4xl mx-auto">
+                        <!-- Tabela de preços será inserida aqui -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO PRÓXIMOS PASSOS / CTA -->
+        <section class="py-24 bg-gray-900 text-center">
+            <div class="container mx-auto px-4 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold">Pronto para dar o próximo passo?</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-400">Estamos prontos para iniciar esta jornada de transformação e alta performance ao seu lado.</p>
+                <div class="mt-8">
+                    <a href="#" id="cta-button" class="btn-brand inline-block rounded-lg py-4 px-10 text-lg uppercase tracking-wider">Aprovar Proposta e Iniciar Projeto</a>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-black py-12">
+        <div class="container mx-auto px-8 text-center text-gray-500">
+             <!-- !! ATENÇÃO: Troque o 'src' pelo caminho correto no seu repositório !! -->
+            <img src="https://i.ibb.co/6P0qQfC/Logo-live-oficial-19.png" alt="Logo Live" class="h-10 mx-auto mb-4">
+            <p>Live Liderança & Vendas</p>
+            <p class="text-sm">Alta performance começa com atitude.</p>
+            <p class="text-sm mt-2" id="footer-contact"></p>
+        </div>
+    </footer>
+
+    <script>
+        // ===================================================================================
+        // ÁREA DE CONFIGURAÇÃO DA PROPOSTA
+        // ===================================================================================
+
+        // <!-- COLE AQUI O CÓDIGO GERADO PELO PROMPT -->
+        // O bloco de código abaixo é apenas um EXEMPLO.
+        // Você deve substituí-lo inteiramente pelo código gerado pelo seu prompt.
+        const dadosProposta = {
+            cliente: {
+                nome: "Empresa Exemplo S/A",
+                contatoEmail: "contato@empresaexemplo.com.br"
+            },
+            dataApresentacao: "07 de Junho de 2025",
+            consultor: {
+                nome: "Cléber",
+                email: "cleber@liveconsultoria.com.br"
+            },
+            diagnostico: `Após uma análise aprofundada dos processos atuais, identificamos uma oportunidade significativa de otimização na comunicação da equipe de vendas e na padronização do funil de conversão. Embora a equipe demonstre grande potencial, a ausência de um playbook claro resulta em abordagens inconsistentes, impactando a previsibilidade dos resultados.`,
+            planoDeAcao: [
+                {
+                    etapa: "01",
+                    titulo: "Imersão e Mapeamento de Processos",
+                    descricao: "Realizaremos workshops com a equipe de liderança e vendas para mapear detalhadamente o fluxo atual, identificar gargalos e definir os KPIs (Key Performance Indicators) que nortearão o projeto.",
+                    duracao: "2 Semanas"
+                },
+                {
+                    etapa: "02",
+                    titulo: "Desenvolvimento do Playbook de Vendas",
+                    descricao: "Com base no mapeamento, criaremos um manual completo de vendas, incluindo scripts, templates de e-mail, guias de qualificação de leads e estratégias para contornar objeções.",
+                    duracao: "4 Semanas"
+                }
+            ],
+            escopo: [
+                {
+                    titulo: "Entregável 1: Relatório de Diagnóstico Completo",
+                    detalhes: "Documento detalhado com a análise SWOT da área comercial, mapeamento de processos e definição de metas."
+                },
+                {
+                    titulo: "Entregável 2: Playbook de Vendas Personalizado",
+                    detalhes: "Manual digital e interativo contendo todas as diretrizes, processos e materiais de apoio para a equipe de vendas."
+                }
+            ],
+            investimento: {
+                itens: [
+                    { servico: "Fase 1 e 2: Diagnóstico e Playbook", valor: 13500.00 },
+                ],
+                total: 13500.00,
+                condicoes: "Pagamento em 2x sem juros via transferência bancária."
+            }
+        };
+        // <!-- FIM DA ÁREA DE CÓDIGO GERADO -->
+
+
+        // ===================================================================================
+        // LÓGICA DE RENDERIZAÇÃO - Não é necessário editar daqui para baixo
+        // ===================================================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Preenche os dados gerais
+            document.getElementById('header-client-name').textContent = `Proposta para: ${dadosProposta.cliente.nome}`;
+            document.getElementById('proposal-client-name').textContent = dadosProposta.cliente.nome;
+            document.getElementById('proposal-date').textContent = dadosProposta.dataApresentacao;
+            document.getElementById('cta-button').href = `mailto:${dadosProposta.consultor.email}?subject=Aprovação da Proposta - ${dadosProposta.cliente.nome}`;
+
+            // Preenche Diagnóstico
+            document.getElementById('diagnosis-summary').textContent = dadosProposta.diagnostico;
+
+            // Preenche Plano de Ação
+            const actionPlanContainer = document.getElementById('action-plan-steps');
+            actionPlanContainer.innerHTML = dadosProposta.planoDeAcao.map(passo => `
+                <div class="mb-10 ml-8">
+                    <div class="absolute -left-4 mt-1.5 h-8 w-8 rounded-full bg-brand-green flex items-center justify-center text-brand-dark font-bold">
+                        ${passo.etapa}
+                    </div>
+                    <div class="p-6 bg-brand-dark rounded-lg shadow-lg border border-gray-800">
+                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Duração Estimada: ${passo.duracao}</time>
+                        <h3 class="text-xl font-semibold text-white">${passo.titulo}</h3>
+                        <p class="text-base font-normal text-gray-400 mt-2">${passo.descricao}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Preenche Escopo Detalhado
+            const scopeContainer = document.getElementById('scope-details');
+            scopeContainer.innerHTML = dadosProposta.escopo.map(item => `
+                <div class="bg-gray-900 p-6 rounded-lg">
+                    <h4 class="text-xl font-semibold text-brand-green">${item.titulo}</h4>
+                    <p class="mt-2 text-gray-400">${item.detalhes}</p>
+                </div>
+            `).join('');
+
+            // Preenche Investimento
+            const investmentContainer = document.getElementById('investment-details');
+            const formatCurrency = (value) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+            
+            investmentContainer.innerHTML = `
+                <div class="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+                    <table class="w-full text-left">
+                        <thead class="bg-black">
+                            <tr>
+                                <th class="p-4 font-semibold text-lg">Serviço / Entregável</th>
+                                <th class="p-4 font-semibold text-lg text-right">Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${dadosProposta.investimento.itens.map(item => `
+                                <tr class="border-b border-gray-800">
+                                    <td class="p-4">${item.servico}</td>
+                                    <td class="p-4 text-right">${formatCurrency(item.valor)}</td>
+                                </tr>
+                            `).join('')}
+                             <tr class="bg-black">
+                                <td class="p-4 text-xl font-bold text-brand-green">TOTAL</td>
+                                <td class="p-4 text-xl font-bold text-brand-green text-right">${formatCurrency(dadosProposta.investimento.total)}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-8 text-center bg-gray-900 p-6 rounded-lg">
+                    <h4 class="text-lg font-semibold">Condições de Pagamento</h4>
+                    <p class="text-gray-400 mt-2">${dadosProposta.investimento.condicoes}</p>
+                </div>
+            `;
+            
+            // Preenche Rodapé
+            document.getElementById('footer-contact').textContent = `Contato: ${dadosProposta.consultor.nome} | ${dadosProposta.consultor.email}`;
+
+
+            // Inicializa os ícones
+            feather.replace();
+        });
+
+        // Função para trocar as abas
+        function openTab(event, tabName) {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>
