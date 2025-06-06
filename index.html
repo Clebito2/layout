@@ -86,6 +86,12 @@
             background-size: cover;
         }
 
+        /* NOVO: Efeito de gradiente para a seção CTA */
+        .cta-gradient {
+            background: linear-gradient(rgba(6, 25, 42, 0.9), rgba(6, 25, 42, 1)), url('https://images.unsplash.com/photo-1560174038-da438a0f440a?q=80&w=2864&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
+        }
+
         /* Classe para seções com padrão de fundo sutil */
         .section-bg-pattern {
             background-color: #111827; /* Cor de fallback (gray-900) */
@@ -150,14 +156,14 @@
             </div>
         </section>
 
-        <!-- SEÇÃO PLANO DE AÇÃO -->
+        <!-- SEÇÃO PLANO DE AÇÃO - HORIZONTAL -->
         <section class="py-16 md:py-24 section-bg-pattern">
-            <div class="container mx-auto px-4 md:px-16 fade-in">
+            <div class="container mx-auto px-4 fade-in">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold">Nosso Plano de Ação</h2>
                     <p class="mt-2 text-gray-400">Etapas concretas para impulsionar seus resultados.</p>
                 </div>
-                <div id="action-plan-steps" class="relative border-l-2 border-brand-green ml-4 md:ml-0 md:mx-auto md:max-w-3xl lg:max-w-4xl">
+                <div id="action-plan-steps" class="flex items-start justify-start md:justify-center p-4 -mx-4 overflow-x-auto">
                     <!-- Etapas do plano serão inseridas aqui pelo JavaScript -->
                 </div>
             </div>
@@ -192,11 +198,11 @@
             </div>
         </section>
         
-        <!-- SEÇÃO PRÓXIMOS PASSOS / CTA -->
-        <section class="py-24 section-bg-pattern text-center">
+        <!-- SEÇÃO PRÓXIMOS PASSOS / CTA - COM NOVA IMAGEM DE FUNDO -->
+        <section class="cta-gradient py-24 text-center">
             <div class="container mx-auto px-4 fade-in">
                 <h2 class="text-3xl md:text-4xl font-bold">Pronto para dar o próximo passo?</h2>
-                <p class="mt-4 max-w-2xl mx-auto text-gray-400">Estamos prontos para iniciar esta jornada de transformação e alta performance ao seu lado.</p>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-300">Estamos prontos para iniciar esta jornada de transformação e alta performance ao seu lado.</p>
                 <div class="mt-8">
                     <a href="#" id="cta-button" class="btn-brand inline-block rounded-lg py-4 px-10 text-lg uppercase tracking-wider">Aprovar Proposta e Iniciar Projeto</a>
                 </div>
@@ -208,8 +214,8 @@
     <!-- RODAPÉ -->
     <footer class="bg-black py-12">
         <div class="container mx-auto px-8 text-center text-gray-500">
-             <!-- LOGO DO RODAPÉ AUMENTADO (de h-10 para h-16) -->
-            <img src="https://raw.githubusercontent.com/Clebito2/layout/main/Logo live oficial-34.png" alt="Logo Live" class="h-16 mx-auto mb-6">
+             <!-- LOGO DO RODAPÉ AUMENTADO (de h-16 para h-20) -->
+            <img src="https://raw.githubusercontent.com/Clebito2/layout/main/Logo live oficial-34.png" alt="Logo Live" class="h-20 mx-auto mb-8">
             <p>Live Liderança & Vendas</p>
             <p class="text-sm">Alta performance começa com atitude.</p>
             <p class="text-sm mt-2" id="footer-contact"></p>
@@ -238,15 +244,27 @@
             planoDeAcao: [
                 {
                     etapa: "01",
-                    titulo: "Imersão e Mapeamento de Processos",
-                    descricao: "Realizaremos workshops com a equipe de liderança e vendas para mapear detalhadamente o fluxo atual, identificar gargalos e definir os KPIs (Key Performance Indicators) que nortearão o projeto.",
+                    titulo: "Imersão e Mapeamento",
+                    descricao: "Workshops com a equipe para mapear o fluxo atual e definir KPIs.",
                     duracao: "2 Semanas"
                 },
                 {
                     etapa: "02",
-                    titulo: "Desenvolvimento do Playbook de Vendas",
-                    descricao: "Com base no mapeamento, criaremos um manual completo de vendas, incluindo scripts, templates de e-mail, guias de qualificação de leads e estratégias para contornar objeções.",
+                    titulo: "Desenvolvimento do Playbook",
+                    descricao: "Criação de um manual de vendas completo com scripts e guias.",
                     duracao: "4 Semanas"
+                },
+                {
+                    etapa: "03",
+                    titulo: "Capacitação da Equipe",
+                    descricao: "Treinamento prático e role-playing para absorção da metodologia.",
+                    duracao: "3 Semanas"
+                },
+                 {
+                    etapa: "04",
+                    titulo: "Acompanhamento",
+                    descricao: "Análise semanal de resultados e otimização contínua da estratégia.",
+                    duracao: "8 Semanas"
                 }
             ],
             escopo: [
@@ -262,9 +280,10 @@
             investimento: {
                 itens: [
                     { servico: "Fase 1 e 2: Diagnóstico e Playbook", valor: 13500.00 },
+                    { servico: "Fase 3 e 4: Treinamento e Acompanhamento", valor: 15000.00 },
                 ],
-                total: 13500.00,
-                condicoes: "Pagamento em 2x sem juros via transferência bancária."
+                total: 28500.00,
+                condicoes: "Pagamento em 4x sem juros via transferência bancária."
             }
         };
         // <!-- FIM DA ÁREA DE CÓDIGO GERADO -->
@@ -283,17 +302,24 @@
             // Preenche Diagnóstico
             document.getElementById('diagnosis-summary').textContent = dadosProposta.diagnostico;
 
-            // Preenche Plano de Ação
+            // Preenche Plano de Ação Horizontal
             const actionPlanContainer = document.getElementById('action-plan-steps');
-            actionPlanContainer.innerHTML = dadosProposta.planoDeAcao.map(passo => `
-                <div class="mb-10 ml-8 relative">
-                    <div class="absolute -left-4 h-8 w-8 rounded-full bg-brand-green flex items-center justify-center text-brand-dark font-bold" style="top: 0; transform: translateY(-50%);">
-                        ${passo.etapa}
-                    </div>
-                    <div class="p-6 bg-brand-dark/70 backdrop-blur-sm rounded-lg shadow-lg border border-gray-800 ml-4">
-                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Duração Estimada: ${passo.duracao}</time>
-                        <h3 class="text-xl font-semibold text-white">${passo.titulo}</h3>
-                        <p class="text-base font-normal text-gray-400 mt-2">${passo.descricao}</p>
+            actionPlanContainer.innerHTML = dadosProposta.planoDeAcao.map((passo, index) => `
+                <div class="relative flex-shrink-0 w-64 mx-4 py-8">
+                    <!-- Linha Conectora -->
+                    <div class="absolute top-1/2 left-0 w-full h-1 bg-brand-green/30" style="transform: translateY(-50%);"></div>
+                    
+                    <div class="relative flex flex-col items-center">
+                        <!-- Ponto na Linha do Tempo -->
+                        <div class="z-10 h-8 w-8 rounded-full bg-brand-green flex items-center justify-center text-brand-dark font-bold ring-4 ring-gray-900">
+                            ${passo.etapa}
+                        </div>
+                        
+                        <!-- Card de Informações -->
+                        <div class="mt-4 p-4 w-full bg-brand-dark/70 backdrop-blur-sm rounded-lg shadow-lg border border-gray-800 text-center">
+                            <h3 class="text-md font-semibold text-white">${passo.titulo}</h3>
+                            <time class="block my-1 text-xs font-normal leading-none text-gray-400">${passo.duracao}</time>
+                        </div>
                     </div>
                 </div>
             `).join('');
