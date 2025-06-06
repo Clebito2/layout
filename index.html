@@ -86,9 +86,9 @@
             background-size: cover;
         }
 
-        /* NOVO: Efeito de gradiente para a seção CTA */
+        /* CORREÇÃO: Efeito de gradiente para a seção CTA com imagem de aperto de mãos */
         .cta-gradient {
-            background: linear-gradient(rgba(6, 25, 42, 0.9), rgba(6, 25, 42, 1)), url('https://images.unsplash.com/photo-1560174038-da438a0f440a?q=80&w=2864&auto=format&fit=crop') no-repeat center center;
+            background: linear-gradient(rgba(6, 25, 42, 0.9), rgba(6, 25, 42, 1)), url('https://images.unsplash.com/photo-1542382257-80ded1448888?q=80&w=2940&auto=format&fit=crop') no-repeat center center;
             background-size: cover;
         }
 
@@ -214,7 +214,7 @@
     <!-- RODAPÉ -->
     <footer class="bg-black py-12">
         <div class="container mx-auto px-8 text-center text-gray-500">
-             <!-- LOGO DO RODAPÉ AUMENTADO (de h-16 para h-20) -->
+             <!-- LOGO DO RODAPÉ AUMENTADO -->
             <img src="https://raw.githubusercontent.com/Clebito2/layout/main/Logo live oficial-34.png" alt="Logo Live" class="h-20 mx-auto mb-8">
             <p>Live Liderança & Vendas</p>
             <p class="text-sm">Alta performance começa com atitude.</p>
@@ -302,7 +302,7 @@
             // Preenche Diagnóstico
             document.getElementById('diagnosis-summary').textContent = dadosProposta.diagnostico;
 
-            // Preenche Plano de Ação Horizontal
+            // CORREÇÃO: Preenche Plano de Ação Horizontal com Título e Descrição
             const actionPlanContainer = document.getElementById('action-plan-steps');
             actionPlanContainer.innerHTML = dadosProposta.planoDeAcao.map((passo, index) => `
                 <div class="relative flex-shrink-0 w-64 mx-4 py-8">
@@ -316,9 +316,10 @@
                         </div>
                         
                         <!-- Card de Informações -->
-                        <div class="mt-4 p-4 w-full bg-brand-dark/70 backdrop-blur-sm rounded-lg shadow-lg border border-gray-800 text-center">
+                        <div class="mt-4 p-4 w-full h-48 flex flex-col justify-center bg-brand-dark/70 backdrop-blur-sm rounded-lg shadow-lg border border-gray-800 text-center">
                             <h3 class="text-md font-semibold text-white">${passo.titulo}</h3>
                             <time class="block my-1 text-xs font-normal leading-none text-gray-400">${passo.duracao}</time>
+                            <p class="text-xs text-gray-300 mt-2">${passo.descricao}</p>
                         </div>
                     </div>
                 </div>
