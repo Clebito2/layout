@@ -113,29 +113,12 @@
             animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* NOVO: Estilo para a galeria de imagens com degradê */
-        .image-showcase {
-            position: relative;
-            padding-top: 66.66%; /* Proporção 3:2 */
+        /* Estilo para a imagem de fundo final */
+        .footer-gradient {
+            background: linear-gradient(to top, var(--azul-petroleo) 5%, transparent 60%), url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2940&auto=format&fit=crop') no-repeat center center;
             background-size: cover;
-            background-position: center;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            transition: transform 0.4s ease;
         }
-        .image-showcase:hover {
-            transform: scale(1.05);
-        }
-        .image-showcase::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* Degradê que começa transparente em cima e fica opaco embaixo */
-            background: linear-gradient(to top, var(--azul-petroleo) 5%, transparent 50%);
-        }
+
     </style>
 </head>
 <body class="bg-brand-dark">
@@ -226,21 +209,10 @@
             </div>
         </section>
         
-        <!-- NOVA SEÇÃO: Galeria Visual -->
-        <section class="py-16 md:py-24 bg-brand-dark">
-            <div class="container mx-auto px-4 md:px-16 fade-in">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold">Visão para o Futuro</h2>
-                    <p class="mt-2 text-gray-400">Construindo juntos uma trajetória de sucesso e crescimento contínuo.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Imagem 1 -->
-                    <div class="image-showcase" style="background-image: url('https://images.unsplash.com/photo-1542744095-291d1f67b221?q=80&w=2940&auto=format&fit=crop');"></div>
-                    <!-- Imagem 2 -->
-                    <div class="image-showcase" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2940&auto=format&fit=crop');"></div>
-                    <!-- Imagem 3 -->
-                    <div class="image-showcase" style="background-image: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2940&auto=format&fit=crop');"></div>
-                </div>
+        <!-- SEÇÃO FINAL COM IMAGEM DE FUNDO -->
+        <section class="footer-gradient h-80 md:h-96 flex items-center justify-center text-center">
+             <div class="container mx-auto px-4 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold">Juntos, construindo o futuro.</h2>
             </div>
         </section>
 
@@ -327,11 +299,11 @@
             // Preenche Plano de Ação
             const actionPlanContainer = document.getElementById('action-plan-steps');
             actionPlanContainer.innerHTML = dadosProposta.planoDeAcao.map(passo => `
-                <div class="mb-10 ml-8">
-                    <div class="absolute -left-4 mt-1.5 h-8 w-8 rounded-full bg-brand-green flex items-center justify-center text-brand-dark font-bold">
+                <div class="mb-10 ml-8 relative">
+                    <div class="absolute -left-4 h-8 w-8 rounded-full bg-brand-green flex items-center justify-center text-brand-dark font-bold" style="top: 0; transform: translateY(-50%);">
                         ${passo.etapa}
                     </div>
-                    <div class="p-6 bg-brand-dark/70 backdrop-blur-sm rounded-lg shadow-lg border border-gray-800">
+                    <div class="p-6 bg-brand-dark/70 backdrop-blur-sm rounded-lg shadow-lg border border-gray-800 ml-4">
                         <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Duração Estimada: ${passo.duracao}</time>
                         <h3 class="text-xl font-semibold text-white">${passo.titulo}</h3>
                         <p class="text-base font-normal text-gray-400 mt-2">${passo.descricao}</p>
